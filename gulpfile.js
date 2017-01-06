@@ -6,6 +6,10 @@ var uglify = require('gulp-uglify');
 var utilities = require('gulp-util');
 var jshint = require('gulp-jshint');
 var del = require('del');
+var express = require('express'); // Express web server framework
+var request = require('request'); // "Request" library
+var querystring = require('querystring');
+var cookieParser = require('cookie-parser');
 var browserSync = require('browser-sync').create();
 var lib = require('bower-files')({
   "overrides":{

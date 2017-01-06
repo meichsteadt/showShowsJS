@@ -3,10 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>Hide your kids, hide your bikes.</title>
-    <link rel="stylesheet" href="build/css/vendor.css">
-    <script src="build/js/vendor.min.js"></script>
+    <link rel="stylesheet" href="css/vendor.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/vendor.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script type="text/javascript" src="build/js/app.js"></script>
+    <!-- <script type="text/javascript" src="build/js/app.js"></script> -->
   </head>
   <div class="container">
       <div id="login">
@@ -18,26 +19,36 @@
         </div>
         <div id="oauth">
         </div>
-        <button type="button" name="button">words</button>
       </div>
     </div>
 
     <script id="user-profile-template" type="text/x-handlebars-template">
-      <h1>Logged in as {{display_name}}</h1>
-      <div class="media">
-        <div class="pull-left">
-          <img class="media-object" width="150" src="{{images.0.url}}" />
-        </div>
-        <div class="media-body">
-          <dl class="dl-horizontal">
-          </dl>
+      <div class="container">
+        <h1>Logged in as {{display_name}}</h1>
+        <div class="media">
+          <div class="pull-left">
+            <img class="media-object" width="150" src="{{images.0.url}}" />
+          </div>
+          <div class="media-body">
+            <dl class="dl-horizontal">
+            </dl>
+          </div>
         </div>
       </div>
     </script>
-    <ul id="artists"></ul>
-    <div class="shows">
-      <ul id="shows"></ul>
+    <div class="container">
+      <div class="row">
+        <div class="col m4">
+          <ul id="artists"></ul>
+        </div>
+        <div class="col m8">
+          <div class="shows">
+            <ul id="shows"></ul>
+          </div>
+        </div>
+      </div>
     </div>
+
     <script id="oauth-template" type="text/x-handlebars-template">
 
     </script>
@@ -79,7 +90,6 @@
             oauthPlaceholder = document.getElementById('oauth');
 
         var params = getHashParams();
-        console.log(params);
         var access_token = params.access_token,
             refresh_token = params.refresh_token,
             error = params.error;
@@ -102,7 +112,6 @@
                 },
                 success: function(response) {
                   userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-                  console.log(response);
                   $('#login').hide();
                   $('#loggedin').show();
                 }
@@ -130,7 +139,6 @@
                         else {
                           showList = '<p>Bummer, no shows coming up</p>'
                         }
-                        console.log(showList);
                         $('#shows').html(showList);
                       });
                     })

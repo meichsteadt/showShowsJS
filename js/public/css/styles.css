@@ -14,5 +14,8 @@ body {
 #shows li {
   margin: 5px;
   font-size: 20px;
+}
 
+#shows li:nth-child(even) {
+  background-color: rgba(0,0,0,0.1);
 }
